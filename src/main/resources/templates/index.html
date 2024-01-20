@@ -1,62 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Translator App</title>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Home</title>
 </head>
 <body>
-<h1>Text Translator</h1>
-
-<form id="translatorForm">
-    <textarea cols="50" id="textArea" placeholder="Enter text to translate" rows="4"></textarea>
-    <br/>
-    <button id="submitButton" onclick="translateText()" type="button">Translate</button>
-</form>
-
-<div id="translationResult"></div>
-
-<script>
-    function translateText() {
-        // Get the text from the textarea
-        var inputText = document.getElementById('textArea').value;
-        document.getElementById('translatorForm').querySelector('button').disabled = true;
-
-        // Check if the textarea is empty
-        if (inputText.trim() === '') {
-            alert('Please enter text before translating.');
-            return;
-        }
-        // Disable the button while fetching
-        var submitButton = document.getElementById('submitButton');
-        submitButton.disabled = true;
-
-        // Make an API call to localhost:8080/api/translator
-        fetch('http://localhost:8080/api/translator', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
-            },
-            body: JSON.stringify({
-                text: inputText,
-            }),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                // Display the translation result
-
-                const translationResult = document.getElementById('translationResult');
-                translationResult.innerHTML = `<p>Translation: ${data.responseData.translatedText}</p>`;
-
-                submitButton.disabled = false;
-            })
-            .catch((error) => {
-                submitButton.disabled = false;
-
-                console.error('Error:', error);
-            });
-    }
-</script>
+<h1>Kotlin / Java Code Interpreter and Translator Challenge</h1>
+<p>Please choose an option:</p>
+<ul>
+    <li><a href="./interpreter.html" target="_blank">Code Interpreter</a></li>
+    <li><a href="./translator.html" target="_blank">EN-DE Translator</a></li>
+</ul>
 </body>
 </html>

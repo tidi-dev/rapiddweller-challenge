@@ -1,24 +1,30 @@
 package daiho.codechallenge.rapiddweller.service
 
-import okhttp3.OkHttpClient
-import okhttp3.Request
+import com.google.cloud.translate.Translate
+import com.google.cloud.translate.TranslateOptions
+import com.google.cloud.translate.Translation
+import daiho.codechallenge.rapiddweller.dto.TranslatorRequestDto
+import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
+
+data class TranslationResponse(
+    val translatedText: String
+)
 
 @Service
 class TranslatorService {
-    private val rapidUrl = "https://translated-mymemory---translation-memory.p.rapidapi.com/get?langpair=en|de&q="
-    private val rapidApiKey = "replace your key"
-    private val rapidApiHost = "translated-mymemory---translation-memory.p.rapidapi.com"
-    private val client = OkHttpClient()
+    private val translate: Translate = TranslateOptions.newBuilder()
+        .setApiKey("REPLACE_YOUR_API_KEY")
+        .build()
+        .service
 
-    fun translate(textToTranslate: String): String {
-        val request = Request.Builder()
-            .url("$rapidUrl$textToTranslate")
-            .get()
-            .addHeader("X-RapidAPI-Key", rapidApiKey)
-            .addHeader("X-RapidAPI-Host", rapidApiHost)
-            .build()
+    fun translate(translatorRequestDto: TranslatorRequestDto): ResponseEntity<TranslationResponse> {
+        val translation: Translation = translate.translate(
+            translatorRequestDto.text,
+            Translate.TranslateOption.targetLanguage(translatorRequestDto.targetLanguage)
+        )
 
-        client.newCall(request).execute().use { return it.body?.string() ?: "Empty response" }
+        val response = TranslationResponse(translation.translatedText)
+        return ResponseEntity.ok(response)
     }
 }
