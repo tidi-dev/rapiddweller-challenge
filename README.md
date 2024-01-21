@@ -17,7 +17,7 @@ In file `src/main/kotlin/daiho/codechallenge/rapiddweller/service/TranslatorServ
         .build()
 ```
 
-<h3>2. Trigger API</h3>
+<h3>2. Test with API</h3>
 
 Endpoint: `localhost:8080/api/translator`
 
@@ -30,3 +30,12 @@ Body
     "targetLanguage": "de"
 }
 ```
+
+<h3>3. Test with UI</h3>
+
+- Right click on `src/main/resources/templates/index.html` to open home page
+<img width="825" alt="image" src="https://github.com/tidi-dev/rapiddweller-challenge/assets/75537580/361479ce-1102-4044-8b5b-1ed1379c6ca0">
+
+- Choose `EN-DE Translator`
+<img width="522" alt="image" src="https://github.com/tidi-dev/rapiddweller-challenge/assets/75537580/fec2c2f1-c23d-41df-b14e-0a53f94927d5">
+
