@@ -1,0 +1,172 @@
+{
+	"info": {
+		"_postman_id": "2b41c2c1-b83a-4bbf-a8bd-8a467617eb88",
+		"name": "Code Interpreter and Translator API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4497691"
+	},
+	"item": [
+		{
+			"name": "translate",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"text\": \"good morning\",\n    \"targetLanguage\": \"de\"\n}\n\n\n\n\n\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/translator",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"translator"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "translate",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"text\": \"Good morning\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/translator",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"translator"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "511"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 19 Jan 2024 19:22:21 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\"responseData\":{\"translatedText\":\"Guten Morgen!\",\"match\":1},\"quotaFinished\":false,\"mtLangSupported\":null,\"responseDetails\":\"\",\"responseStatus\":200,\"responderId\":null,\"exception_code\":null,\"matches\":[{\"id\":\"782710394\",\"segment\":\"Good morning\",\"translation\":\"Guten Morgen!\",\"source\":\"en-GB\",\"target\":\"de-DE\",\"quality\":\"74\",\"reference\":null,\"usage-count\":4,\"subject\":\"All\",\"created-by\":\"MateCat\",\"last-updated-by\":\"MateCat\",\"create-date\":\"2023-04-01 15:08:24\",\"last-update-date\":\"2023-04-01 15:08:24\",\"match\":1}]}"
+				}
+			]
+		},
+		{
+			"name": "interpreter",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"input\": \"val x = 2 + 2\"\n}\n\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/interpreter",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"interpreter"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "translate",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"text\": \"Good morning\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/translator",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"translator"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "text/plain;charset=UTF-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "511"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 19 Jan 2024 19:22:21 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\"responseData\":{\"translatedText\":\"Guten Morgen!\",\"match\":1},\"quotaFinished\":false,\"mtLangSupported\":null,\"responseDetails\":\"\",\"responseStatus\":200,\"responderId\":null,\"exception_code\":null,\"matches\":[{\"id\":\"782710394\",\"segment\":\"Good morning\",\"translation\":\"Guten Morgen!\",\"source\":\"en-GB\",\"target\":\"de-DE\",\"quality\":\"74\",\"reference\":null,\"usage-count\":4,\"subject\":\"All\",\"created-by\":\"MateCat\",\"last-updated-by\":\"MateCat\",\"create-date\":\"2023-04-01 15:08:24\",\"last-update-date\":\"2023-04-01 15:08:24\",\"match\":1}]}"
+				}
+			]
+		}
+	]
+}
