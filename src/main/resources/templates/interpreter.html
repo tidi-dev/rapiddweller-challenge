@@ -1,10 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Code Interpreter</title>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Code Interpreter App</title>
 </head>
 <body>
+<h1>Code Interpreter</h1>
 
+<form id="interpreterForm">
+    <textarea cols="50" id="textArea" placeholder="Enter text to translate" rows="4"></textarea>
+    <br/>
+    <button id="submitButton" onclick="interpreterCode()" type="button">Translate</button>
+</form>
+
+<div id="interpreterResult"></div>
+
+<script>
+    function interpreterCode() {
+        // Get the text from the textarea
+        const inputText = document.getElementById('textArea').value;
+        document.getElementById('interpreterForm').querySelector('button').disabled = true;
+        const submitButton = document.getElementById('submitButton');
+        const interpreterResult = document.getElementById('interpreterResult');
+
+        // Check if the textarea is empty
+        if (inputText.trim() === '') {
+            alert('Please enter script before interpreter.');
+            submitButton.disabled = false;
+
+            return;
+        }
+        // Disable the button while fetching
+        submitButton.disabled = true;
+
+        // Make an API call to localhost:8080/api/interpreter
+        fetch('http://localhost:8080/api/interpreter', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+            },
+            body: JSON.stringify({
+                input: inputText,
+            }),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                // Display the interpreter result
+                interpreterResult.innerHTML = `<p>${data.output}</p>`;
+
+                submitButton.disabled = false;
+            })
+            .catch((error) => {
+                submitButton.disabled = false;
+                interpreterResult.innerHTML = `<p>Error: ${error}</p>`;
+            });
+    }
+</script>
 </body>
 </html>

@@ -4,6 +4,7 @@ import com.google.cloud.translate.Translate
 import com.google.cloud.translate.TranslateOptions
 import com.google.cloud.translate.Translation
 import daiho.codechallenge.rapiddweller.dto.TranslatorRequestDto
+import io.github.cdimascio.dotenv.Dotenv
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
 
@@ -12,9 +13,9 @@ data class TranslationResponse(
 )
 
 @Service
-class TranslatorService {
+class TranslatorService(private final val dotenv: Dotenv) {
     private val translate: Translate = TranslateOptions.newBuilder()
-        .setApiKey("REPLACE_YOUR_API_KEY")
+        .setApiKey(dotenv["API_KEY"])
         .build()
         .service
 
@@ -23,8 +24,6 @@ class TranslatorService {
             translatorRequestDto.text,
             Translate.TranslateOption.targetLanguage(translatorRequestDto.targetLanguage)
         )
-
-        val response = TranslationResponse(translation.translatedText)
-        return ResponseEntity.ok(response)
+        return ResponseEntity.ok(TranslationResponse(translation.translatedText))
     }
 }

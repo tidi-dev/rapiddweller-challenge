@@ -27,6 +27,10 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
+
+    implementation("org.jetbrains.kotlin:kotlin-scripting-jsr223:1.9.21")
+    implementation("io.github.cdimascio:dotenv-java:3.0.0")
+
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
