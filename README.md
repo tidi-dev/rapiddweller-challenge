@@ -41,7 +41,7 @@ For the seamless installation and testing of software, it is advisable to establ
 
 # TESTING
 This involves both UI testing and API testing methodologies. 
-Right click on `src/main/resources/templates/index.html` to open home page
+Home Page: `http://localhost:8080`
 
 <img width="825" alt="image" src="https://github.com/tidi-dev/rapiddweller-challenge/assets/75537580/361479ce-1102-4044-8b5b-1ed1379c6ca0">
 
