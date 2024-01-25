@@ -10,6 +10,7 @@ COPY settings.gradle.kts .
 
 # Copy the entire source code to the container
 COPY src src
+COPY .env .env
 
 # Install necessary tools (curl, unzip)
 RUN apt-get update && \
@@ -23,10 +24,12 @@ RUN curl -sSL https://services.gradle.org/distributions/gradle-8.5-bin.zip -o gr
     mv gradle-* gradle
 
 # Build the application with Gradle
-RUN ./gradle/bin/gradle build
+RUN ./gradle/bin/gradle clean build
 
 # Expose the port that the application will run on
 EXPOSE 8080
 
 # Set the default command to run the application
-CMD ["java", "-jar", "build/libs/rapiddweller-0.0.1-SNAPSHOT.jar"]
+#CMD ["java", "-jar", "build/libs/rapiddweller-0.0.1-SNAPSHOT.jar"]
+CMD ["./gradle/bin/gradle", "bootRun"]
+
