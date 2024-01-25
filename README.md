@@ -39,6 +39,10 @@ For the seamless installation and testing of software, it is advisable to establ
 
 > The process may require some time due to the installation of dependencies and libraries.
 
+<img width="1426" alt="image" src="https://github.com/tidi-dev/rapiddweller-challenge/assets/75537580/4dde860a-c6d5-441f-a31d-da888e53186a">
+
+> Upon the manifestation of the terminal exhibit proclaiming the "Kotlin / Java Code Interpreter and Translator Challenge," the application stands poised for immediate utilization.
+
 # TESTING
 This involves both UI testing and API testing methodologies. 
 
