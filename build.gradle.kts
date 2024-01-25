@@ -21,6 +21,9 @@ repositories {
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+    implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("com.google.cloud:google-cloud-translate:2.33.0")
     implementation("jakarta.validation:jakarta.validation-api:3.0.2")
@@ -31,7 +34,7 @@ dependencies {
     implementation("io.github.cdimascio:dotenv-java:3.0.0")
 
     developmentOnly("org.springframework.boot:spring-boot-devtools")
-    
+
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
